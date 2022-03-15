@@ -4,6 +4,8 @@ use std::process::Output;
 #[derive(Debug, Copy, Clone)]
 pub struct Scalar { value: f64 }
 
+
+//TODO: Re-implement with generics (Vector<T> or Vector<T, S>)
 #[derive(Debug, Clone)]
 pub struct Vector {
     value: Vec<f64>
@@ -139,5 +141,21 @@ impl Sub for Vector {
 
         Self { value: Iterator::zip(vec.iter(), other_vec.iter()).map(|t| t.0 - t.1).collect()}
     }
+}
+
+// Matrices
+
+pub struct <T: Mul + Add> Matrix {
+    value: Vec<Vec<T>>
+}
+
+pub trait Det {
+    type Output;
+
+    fn det() -> Self::Output;
+}
+
+impl Det for Matrix<T> {
+    Output = T
 }
 
