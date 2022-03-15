@@ -1,4 +1,4 @@
-use crate::structs::math::{Vector, Dot, Scalar};
+use crate::structs::math::{Vector, Dot, Scalar, Matrix, Det};
 
 #[test]
 fn test_vectors() {
@@ -6,6 +6,17 @@ fn test_vectors() {
     test_vector_add();
     test_vector_scalar();
     test_vector_subtraction();
+}
+
+fn test_matrices() {
+    test_matrix_det();
+    test_matrix_validity();
+    test_matrix_square();
+}
+
+fn test_matrix_det() {
+    let m1 = Matrix::from_vec(vec![vec![1, 0, 0], vec![0, 1, 0], vec![0, 0, 1]]);
+    assert_eq!(m1.det(), 1)
 }
 
 #[test]
