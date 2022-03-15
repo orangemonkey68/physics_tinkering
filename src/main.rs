@@ -5,7 +5,9 @@ extern crate piston;
 
 use opengl_graphics::GlGraphics;
 
+#[cfg(test)]
 mod structs;
+mod tests;
 
 pub struct App {
     gl: GlGraphics,
